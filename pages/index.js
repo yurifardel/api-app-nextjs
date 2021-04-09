@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-export default function Home(props) {
+export default function Home({ list }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -10,23 +10,34 @@ export default function Home(props) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>FILMES</h1>
 
-        <h1>meu nome é {props.name}</h1>
+        <ul>
+          {list.map((item) => {
+            return (
+              <li>
+                <img
+                  src={`https://www.themoviedb.org/t/p/original/${item.poster_path}`}
+                  width="150"
+                />
+                <br />
+                {item.title}
+              </li>
+            );
+          })}
+        </ul>
       </main>
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3000/api/hello");
+  const response = await fetch("http://localhost:3000/api/trending");
   const json = await response.json();
 
   return {
     props: {
-      name: json.name,
+      list: json.list,
     },
   };
 }
