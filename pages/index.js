@@ -1,5 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
+
+//server side render
 
 export default function Home({ list }) {
   return (
@@ -11,17 +14,19 @@ export default function Home({ list }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>FILMES</h1>
-
+        <Link href="/buscar">Buscar filme</Link>
         <ul>
           {list.map((item) => {
             return (
               <li>
-                <img
-                  src={`https://www.themoviedb.org/t/p/original/${item.poster_path}`}
-                  width="150"
-                />
-                <br />
-                {item.title}
+                <a href={`https://www.themoviedb.org/movie/${item.id}`}>
+                  <img
+                    src={`https://www.themoviedb.org/t/p/original/${item.poster_path}`}
+                    width="150"
+                  />
+                  <br />
+                  {item.title}
+                </a>
               </li>
             );
           })}
