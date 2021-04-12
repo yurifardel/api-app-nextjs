@@ -19,7 +19,7 @@ export default function Home({ list }) {
           {list.map((item) => {
             return (
               <li>
-                <a href={`https://www.themoviedb.org/movie/${item.id}`}>
+                <a href={`/movie/${item.id}`}>
                   <img
                     src={`https://www.themoviedb.org/t/p/original/${item.poster_path}`}
                     width="150"
