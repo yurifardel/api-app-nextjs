@@ -26,10 +26,11 @@ export async function getServerSideProps(context) {
     `http://localhost:3000/api/movie/${context.params.id}`
   );
   const json = await response.json();
+  console.log(json);
 
   return {
     props: {
-      info: json,
+      info: json.info,
     },
   };
 }
