@@ -31,6 +31,8 @@ export default function Home({ list }) {
             );
           })}
         </ul>
+
+        <Link href="/sobre">Sobre</Link>
       </main>
     </div>
   );
